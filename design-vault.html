@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Vault | Y.S_ Ecosystem</title>
+    <meta name="description" content="Design Vault: UI/UX Systems, Components, and Interface Architecture by Yogesh Sharma.">
+    <!-- Open Graph & Twitter Cards for SEO -->
+    <meta property="og:title" content="Design Vault | Y.S_ Ecosystem">
+    <meta property="og:description" content="Design Vault: UI/UX Systems, Components, and Interface Architecture by Yogesh Sharma.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Design Vault | Y.S_ Ecosystem">
+    <meta name="twitter:description" content="Design Vault: UI/UX Systems, Components, and Interface Architecture by Yogesh Sharma.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@600;800&family=Rubik+Maze&family=Jim+Nightshade&family=Mate+SC&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!-- Base Styles (for variables) & Ecosystem Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ecosystem.css">
+</head>
+<body class="ecosystem-page">
+    
+    <!-- Header Space -->
+    <header class="eco-container">
+        <canvas id="canvas-dv-sphere" class="canvas-container-3d"></canvas>
+        <h1 class="eco-title gsap-reveal">DESIGN VAULT</h1>
+        <h2 class="eco-subtitle gsap-reveal font-rubik-maze">UI/UX Systems • Components • Interface Architecture</h2>
+    </header>
+
+    <!-- SECTION A: UI COMPONENT LIBRARY -->
+    <section class="eco-container eco-section">
+        <div class="eco-section-title gsap-reveal">
+            <h3>I. Component Library</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_COMPONENTS</span>
+        </div>
+        
+        <input type="text" class="dv-search-bar gsap-reveal" placeholder="Search components... (e.g. Buttons, Inputs, Loaders)">
+        
+        <div class="dv-gallery-grid">
+            <!-- Component 1: Cyber Button -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area">
+                    <button class="eco-btn">Initialize Sequence <i class="ri-arrow-right-line"></i></button>
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;button class="eco-btn"&gt;Initialize Sequence &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;&lt;/button&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.eco-btn {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.eco-btn:hover {
+    background: #fff;
+    color: #000;
+}
+                </div>
+            </div>
+
+            <!-- Component 2: Toggle Switch -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area">
+                    <label style="display:flex; align-items:center; cursor:pointer; gap:10px;">
+                        <input type="checkbox" style="width:20px; height:20px; accent-color: #fff;">
+                        <span style="font-family: var(--font-code);">SYS_SYNC</span>
+                    </label>
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;label class="neural-toggle"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span&gt;SYS_SYNC&lt;/span&gt;
+&lt;/label&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.neural-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+}
+.neural-toggle input {
+    width: 20px;
+    height: 20px;
+    accent-color: #fff;
+}
+                </div>
+            </div>
+
+            <!-- Component 3: Input Field -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area" style="padding: 2rem;">
+                    <input type="text" placeholder="ENTER IDENTIFIER..." style="width:100%; background:transparent; border:none; border-bottom: 2px solid #fff; color:#fff; font-family:var(--font-code); font-size:1.2rem; padding:0.5rem 0; outline:none;">
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;input type="text" class="data-vector-input" placeholder="ENTER IDENTIFIER..."&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.data-vector-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    padding: 0.5rem 0;
+    outline: none;
+}
+                </div>
+            </div>
+
+            <!-- Component 4: Modern Loader -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area">
+                    <div style="width:40px; height:40px; border:3px solid rgba(255,255,255,0.1); border-top:3px solid #fff; border-radius:50%; animation: spin 1s linear infinite;"></div>
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;div class="quantum-loader"&gt;&lt;/div&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.quantum-loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+                </div>
+            </div>
+            
+            <!-- Component 5: Alert System -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area" style="padding: 2rem;">
+                    <div style="width: 100%; padding: 1rem; border-left: 4px solid #ff3333; background: rgba(255, 51, 51, 0.1); font-family: var(--font-code); font-size: 0.9rem;">
+                        <i class="ri-error-warning-line" style="color: #ff3333; margin-right: 10px;"></i> [ERR_001] BREACH DETECTED
+                    </div>
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;div class="system-alert"&gt;
+    &lt;i class="ri-error-warning-line"&gt;&lt;/i&gt; [ERR_001] BREACH DETECTED
+&lt;/div&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.system-alert {
+    padding: 1rem;
+    border-left: 4px solid #ff3333;
+    background: rgba(255, 51, 51, 0.1);
+}
+                </div>
+            </div>
+
+            <!-- Component 6: Tech Card -->
+            <div class="dv-component-card gsap-reveal">
+                <div class="dv-toolbar">
+                    <div class="dv-tabs">
+                        <button class="dv-tab active" data-type="preview">Preview</button>
+                        <button class="dv-tab" data-type="html">HTML</button>
+                        <button class="dv-tab" data-type="css">CSS</button>
+                    </div>
+                    <div class="dv-actions">
+                        <button class="dv-btn-copy" title="Copy Code"><i class="ri-clipboard-line"></i></button>
+                    </div>
+                </div>
+                <div class="dv-preview-area" style="padding: 2rem;">
+                    <div style="border: 1px dashed rgba(255,255,255,0.3); padding: 1.5rem; width: 100%;">
+                        <div style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">MODULE_X</div>
+                        <div style="font-family: var(--font-body); color: var(--eco-text-muted); font-size: 0.9rem;">Encapsulated structural element.</div>
+                    </div>
+                </div>
+                <div class="dv-code-area" data-type="html">
+&lt;div class="data-container"&gt;
+    &lt;div class="title"&gt;MODULE_X&lt;/div&gt;
+    &lt;div class="desc"&gt;Encapsulated element.&lt;/div&gt;
+&lt;/div&gt;
+                </div>
+                <div class="dv-code-area" data-type="css">
+.data-container {
+    border: 1px dashed rgba(255,255,255,0.3);
+    padding: 1.5rem;
+}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION B: WEBSITE DESIGN ARCHIVE -->
+    <section class="eco-container eco-section">
+        <div class="eco-section-title gsap-reveal">
+            <h3>II. Website Design Archive</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_ARCHITECTURES</span>
+        </div>
+        
+        <div class="eco-grid eco-grid-3">
+            <!-- Project 1 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/04/fc/c9/04fcc95a67df38fd7c5d1f568a9c03a4.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/736x/6b/9f/e6/6b9fe667897da457fab598685111b454.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/98/c1/fa/98c1facc46743bafbaa2eba07e075dac.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/736x/12/b4/9a/12b49ad3629e53c48cba72a16149984d.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/11/7c/4d/117c4dda83175154246495e93b440c99.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/fd/89/0c/fd890c1cc94043643fddc2c5ceae33d3.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/29/78/60/29786004b73a76689cc6260a12ead874.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/01/96/64/01966446886f971511c744317665c2b1.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/1200x/db/53/6c/db536c6badf4b3862db8e7092753e70b.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/736x/fb/c1/10/fbc11064e20d4de8db9d6e7863541232.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/736x/db/bb/5a/dbbb5a28163c62e03f96eeef351bb5ac.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 12 -->
+            <div class="eco-card gsap-reveal" style="min-height: 400px; display:flex; flex-direction: column;">
+                <div style="height: 200px; background: #111; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid var(--eco-border); overflow: hidden;">
+                    <img src="https://i.pinimg.com/736x/aa/ea/27/aaea2739d5f2b60b3f06560cf78d0cf9.jpg" alt="Project Preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Project Title</h4>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted);">Project Category</p>
+                    <p style="font-size: 0.9rem; color: var(--eco-text-muted); margin-bottom: 1rem;">Future Description Area</p>
+                    <div style="margin-top: auto; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                        <span style="font-family: var(--font-code); font-size: 0.75rem; color: #fff;">[ FUTURE LIVE LINK ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Marquee Shared System -->
+    <div class="eco-marquee-wrapper">
+        <div class="eco-marquee-content">
+            <div class="eco-marquee-item"><i class="ri-github-fill"></i> GitHub Open Source</div>
+            <div class="eco-marquee-item"><i class="ri-microsoft-fill"></i> Microsoft Learn Ecosystem</div>
+            <div class="eco-marquee-item"><i class="ri-google-fill"></i> Google Developer Communities</div>
+            <div class="eco-marquee-item"><i class="ri-linkedin-fill"></i> LinkedIn Professional Hub</div>
+            <div class="eco-marquee-item"><i class="ri-terminal-box-line"></i> Web3 Interfaces</div>
+            <!-- Duplicate for infinite effect -->
+            <div class="eco-marquee-item"><i class="ri-github-fill"></i> GitHub Open Source</div>
+            <div class="eco-marquee-item"><i class="ri-microsoft-fill"></i> Microsoft Learn Ecosystem</div>
+            <div class="eco-marquee-item"><i class="ri-google-fill"></i> Google Developer Communities</div>
+            <div class="eco-marquee-item"><i class="ri-linkedin-fill"></i> LinkedIn Professional Hub</div>
+            <div class="eco-marquee-item"><i class="ri-terminal-box-line"></i> Web3 Interfaces</div>
+        </div>
+    </div>
+
+    <!-- Elegant Main Footer -->
+    <footer id="main-footer" class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="syne-heading">Yogesh Sharma</h2>
+                <p class="jakarta-text">Engineering the future through logic and design.</p>
+            </div>
+            <div class="footer-graphic">
+                <!-- Minimal Developer Workstation SVG -->
+                <svg class="dev-silhouette" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Desk -->
+                    <line x1="10" y1="80" x2="90" y2="80" stroke="#333" stroke-width="2"/>
+                    <!-- Laptop -->
+                    <path d="M25 80 L45 80 L42 75 L28 75 Z" fill="#444" />
+                    <rect x="30" y="60" width="10" height="15" fill="#111" stroke="#444" stroke-width="1.5"/>
+                    <rect class="screen-glow" x="31" y="61" width="8" height="11" fill="#fff" opacity="0.9"/>
+                    <!-- Developer Silhouette -->
+                    <path d="M60 65 Q55 55 45 60 Q42 70 42 80 L65 80 Q65 70 60 65 Z" fill="#888" />
+                    <circle cx="58" cy="50" r="7" fill="#888" />
+                </svg>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#about" class="magnetic-link jakarta-text" aria-label="Profile Section">Profile</a>
+                <a href="index.html#services" class="magnetic-link jakarta-text" aria-label="Platform Hub Section">Platform Hub</a>
+                <a href="index.html#contact" class="magnetic-link jakarta-text" aria-label="Connect Section">Connect</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="major-mono">&copy; 2026 YOGESH SHARMA. ALL SYSTEMS OPERATIONAL.</p>
+            <p class="major-mono sys-status"><span class="pulse-dot"></span> SECURE_CONNECTION</p>
+        </div>
+    </footer>
+
+
+
+    <!-- GSAP & Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="ecosystem.js"></script>
+</body>
+</html>

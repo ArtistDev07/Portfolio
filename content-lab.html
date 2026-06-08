@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Lab | Y.S_ Ecosystem</title>
+    <meta name="description" content="Content Lab: Articles, ideas, and content systems by Yogesh Sharma.">
+    <!-- Open Graph & Twitter Cards for SEO -->
+    <meta property="og:title" content="Content Lab | Y.S_ Ecosystem">
+    <meta property="og:description" content="Content Lab: Articles, ideas, and content systems by Yogesh Sharma.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Content Lab | Y.S_ Ecosystem">
+    <meta name="twitter:description" content="Content Lab: Articles, ideas, and content systems by Yogesh Sharma.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@600;800&family=Rubik+Maze&family=Jim+Nightshade&family=Mate+SC&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!-- Quill.js Core and Snow Theme -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+
+    <!-- Base Styles & Ecosystem Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ecosystem.css">
+
+    <style>
+        /* Quill Dark Mode Overrides */
+        .ql-toolbar.ql-snow { background: #222; border: 1px solid var(--eco-border) !important; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        .ql-toolbar.ql-snow .ql-stroke { stroke: #ccc; }
+        .ql-toolbar.ql-snow .ql-fill { fill: #ccc; }
+        .ql-toolbar.ql-snow .ql-picker { color: #ccc; }
+        .ql-container.ql-snow { border: 1px solid var(--eco-border) !important; border-top: none !important; font-family: var(--font-body); font-size: 1.1rem; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+        .ql-editor.ql-blank::before { color: #666; font-style: normal; }
+        .ql-editor img { max-width: 100%; border-radius: 8px; margin: 1rem 0; }
+        .ql-editor p { margin-bottom: 1rem; line-height: 1.6; }
+        .ql-editor h1, .ql-editor h2, .ql-editor h3 { font-family: var(--font-heading); margin-top: 2rem; margin-bottom: 1rem; color: #fff; }
+        .ql-editor pre.ql-syntax { background-color: #050505; border: 1px solid #333; padding: 1rem; border-radius: 4px; }
+        
+        /* Visitor Blog Grid */
+        .visitor-blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .visitor-blog-card { background: #111; border: 1px solid var(--eco-border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: var(--transition-snappy); display: flex; flex-direction: column; }
+        .visitor-blog-card:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-5px); }
+        .visitor-blog-cover { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--eco-border); }
+        .visitor-blog-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+        .blog-card {
+            display: flex;
+            background: var(--eco-surface);
+            border: 1px solid var(--eco-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition-snappy);
+            margin-bottom: 2rem;
+        }
+        .blog-card:hover {
+            border-color: var(--eco-text);
+            transform: translateX(10px);
+        }
+        .blog-cover {
+            width: 300px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--eco-border);
+        }
+        .blog-content {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        .blog-meta {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--eco-text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .blog-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            color: var(--eco-text);
+        }
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 2rem;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            background: #111;
+            border: 1px solid var(--eco-border);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-card { flex-direction: column; }
+            .blog-cover { width: 100%; height: 200px; border-right: none; border-bottom: 1px solid var(--eco-border); }
+            .masonry-grid { column-count: 1; }
+        }
+
+        /* Journey Video Showcase */
+        .journey-split {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+        .journey-video-wrapper {
+            position: sticky;
+            top: 120px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--eco-border);
+            background: #050505;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+            transition: var(--transition-snappy);
+        }
+        .journey-video-wrapper:hover {
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(255,255,255,0.05);
+        }
+        @media (max-width: 1024px) {
+            .journey-split {
+                grid-template-columns: 1fr;
+            }
+            .journey-video-wrapper {
+                position: relative;
+                top: 0;
+                max-width: 100%;
+                margin-top: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body class="ecosystem-page font-jim-nightshade">
+    
+    <header class="eco-container">
+        <canvas id="canvas-cl-torus" class="canvas-container-3d"></canvas>
+        <h1 class="eco-title gsap-reveal">CONTENT LAB</h1>
+        <h2 class="eco-subtitle gsap-reveal font-rubik-maze">Ideas • Blogs • Content Systems</h2>
+    </header>
+
+    <!-- SECTION A: BLOG ENGINE -->
+    <section class="eco-container eco-section" id="blog-section">
+        <div class="eco-section-title gsap-reveal" style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <h3>I. Blog Engine</h3>
+                <span class="eco-subtitle" style="margin:0;">SYS_EDITORIAL</span>
+            </div>
+            <button id="btn-trigger-login" class="eco-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;"><i class="ri-lock-line"></i> Admin Auth</button>
+        </div>
+
+        <!-- VISITOR VIEW -->
+        <div id="blog-visitor-view" class="visitor-blog-grid gsap-reveal">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- ADMIN DASHBOARD (Hidden by default) -->
+        <div id="blog-dashboard-container" class="blog-dashboard" style="display: none;">
+            <div class="blog-sidebar">
+                <h4 style="font-family:var(--font-heading); color:#fff; border-bottom:1px solid var(--eco-border); padding-bottom:1rem; margin-bottom:1rem;">DASHBOARD</h4>
+                <div id="blog-nav-manage" class="blog-nav-item active"><i class="ri-article-line"></i> Manage Posts</div>
+                <div id="blog-nav-write" class="blog-nav-item"><i class="ri-edit-box-line"></i> Write New</div>
+                <div id="blog-nav-logout" class="blog-nav-item" style="color: #f33; margin-top: 2rem;"><i class="ri-logout-box-line"></i> Logout</div>
+            </div>
+            <div class="blog-main-area">
+                <!-- Manage Posts View -->
+                <div id="blog-view-list" class="blog-list-view active">
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:2rem;">All Articles (Admin)</h3>
+                    <div id="blog-list-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Write New View -->
+                <div id="blog-view-write" class="blog-editor-view">
+                    <form id="blog-form">
+                        <input type="hidden" id="blog-id">
+                        <input type="text" id="blog-title" class="blog-input blog-title-input" placeholder="Article Title..." required style="margin-bottom: 1rem; font-size: 1.5rem; padding: 1rem;">
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <input type="text" id="blog-category" class="blog-input" placeholder="Category">
+                            <input type="text" id="blog-tags" class="blog-input" placeholder="Tags (comma separated)">
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label style="color: #888; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Cover Image</label>
+                            <input type="file" id="blog-cover-file" accept="image/*" class="blog-input">
+                            <input type="hidden" id="blog-cover-base64">
+                            <img id="blog-cover-preview" style="max-width: 200px; margin-top: 1rem; border-radius: 4px; display: none;">
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <label style="color: #888; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Content</label>
+                            <div id="quill-editor" style="height: 400px; color: #fff;"></div>
+                        </div>
+                        
+                        <div class="editor-actions" style="display: flex; gap: 1rem;">
+                            <button type="button" id="btn-save-draft" class="eco-btn" style="flex:1;">Save Draft</button>
+                            <button type="button" id="btn-publish-post" class="eco-btn" style="flex:1; background:#fff; color:#000;">Publish Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL BLOG OVERLAY -->
+    <div id="full-blog-overlay" style="display: none; background: var(--eco-bg); position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow-y: auto; z-index: 1000;">
+        <div id="blog-progress-bar" style="position: fixed; top: 0; left: 0; height: 4px; background: #fff; width: 0%; z-index: 1001; transition: width 0.1s;"></div>
+        <div class="eco-container" style="padding-top: 4rem; padding-bottom: 8rem; max-width: 800px; margin: 0 auto;">
+            <button id="btn-close-blog" class="eco-btn" style="margin-bottom: 2rem; padding: 0.5rem 1rem;"><i class="ri-arrow-left-line"></i> Back to Lab</button>
+            <div id="full-blog-content-area">
+                <!-- Injected via JS -->
+            </div>
+            <div id="full-blog-related" style="margin-top: 4rem; border-top: 1px solid var(--eco-border); padding-top: 2rem;">
+                <h4 style="font-family: var(--font-heading); margin-bottom: 1rem;">Related Posts</h4>
+                <div id="related-posts-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="admin-login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: #111; padding: 3rem; border: 1px solid var(--eco-border); border-radius: 8px; width: 100%; max-width: 400px; text-align: center;">
+            <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">ADMIN SYSTEM</h3>
+            <input type="password" id="admin-password" class="blog-input" placeholder="Enter Authentication Key" style="text-align: center; margin-bottom: 1.5rem; width: 100%;">
+            <button id="admin-submit-btn" class="eco-btn" style="width: 100%;">AUTHENTICATE</button>
+            <button id="admin-cancel-btn" style="background: none; border: none; color: #888; margin-top: 1.5rem; cursor: pointer; text-decoration: underline;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- SECTION B: CONTENT DESIGN LIBRARY -->
+    <section class="eco-container eco-section">
+        <div class="eco-section-title gsap-reveal">
+            <h3>II. Content Design Library</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_SOCIAL</span>
+        </div>
+        
+        <div class="masonry-grid">
+            <!-- Card 1 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/1200x/b4/fe/e9/b4fee936c01f147b84229e8df135344a.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/webp/736x/26/d6/ef/26d6efede6e21522e070b822f88dfaa2.webp" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/c0/f7/17/c0f717250efcc35e7e583acee9a299c7.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/bc/e0/b1/bce0b15f61f4304f35ffc19a2f170c23.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/bf/4a/61/bf4a612772a2a191815870ae074f56fc.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/8f/98/60/8f986093e8457271aedcdedca5d37848.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/webp/1200x/65/ed/56/65ed567b9f4a5a24a068fa62c0da0ceb.webp" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/originals/6c/6e/9f/6c6e9fe90b19fd9b0087276fa798b594.gif" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/2f/35/0d/2f350d3ed408d3ca192c5ddbfe05009e.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/1200x/48/49/ec/4849ec88388a09b8a442ca312c7066db.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/2e/d3/01/2ed3014edb2c7a5115ec54c9a479803d.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/webp/1200x/7d/ac/0c/7dac0c95f05617e420cef25bf1e59283.webp" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/a1/f6/a3/a1f6a3d33a4a01de0d800bd0bb5b37a1.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 14 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/17/e2/9d/17e29d45dbc4d7445fa9826656af0028.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/webp/1200x/01/fa/b2/01fab230ead5e99931eff10d746d2a96.webp" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 16 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/1200x/e6/54/9b/e6549bcc36ecf95d3f5b190592247854.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 17 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/bd/43/f0/bd43f056970de3c244dfffef2f5e885e.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 18 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/originals/9e/e6/41/9ee641ce331ab4fb6a1b73f52b5f467b.gif" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 19 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/736x/64/1c/ef/641cef62059798e9bcca9b3edbde6d64.jpg" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+
+            <!-- Card 20 -->
+            <div class="masonry-item gsap-reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="https://i.pinimg.com/webp/736x/96/ec/93/96ec93c93650578112591c8a2ef06aff.webp" loading="lazy" alt="Content Preview" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;">
+                    <span style="font-family: var(--font-code); font-size: 0.7rem; color: #888;">[ CONTENT CATEGORY ]</span>
+                    <h5 style="font-family: var(--font-heading); font-size: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Content Title</h5>
+                    <p style="font-size: 0.85rem; color: var(--eco-text-muted);">Future Description Area</p>
+                </div>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--eco-border); padding-top: 1rem;">
+                    <span style="font-size: 0.8rem; color: #fff; font-family: var(--font-code);">[ FUTURE EXTERNAL LINK ]</span>
+                    <i class="ri-external-link-line"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION C: JOURNEY EXPERIENCE -->
+    <section class="eco-container eco-section" style="padding-bottom: 10rem;">
+        <div class="eco-section-title gsap-reveal">
+            <h3>III. Journey Experience</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_TIMELINE</span>
+        </div>
+        
+        <div class="journey-split">
+            <div class="eco-timeline">
+                <div class="eco-timeline-node">
+                    <div class="eco-timeline-date">PHASE 01 // INCEPTION</div>
+                    <h4 class="eco-timeline-title">The Foundation</h4>
+                    <p style="color: var(--eco-text-muted); max-width: 600px;">
+                        <strong>Story:</strong> Began the journey into digital logic and interfaces.<br>
+                        <strong>Learning:</strong> Mastered the core tenets of HTML, CSS, and basic scripting.<br>
+                        <strong>Challenge:</strong> Bridging the gap between static design and dynamic functionality.<br>
+                        <strong>Achievement:</strong> First deployed application.<br>
+                        <strong>Impact:</strong> Established the baseline for all future architectural thinking.
+                    </p>
+                </div>
+                
+                <div class="eco-timeline-node">
+                    <div class="eco-timeline-date">PHASE 02 // EXPANSION</div>
+                    <h4 class="eco-timeline-title">Full-Stack Synthesis</h4>
+                    <p style="color: var(--eco-text-muted); max-width: 600px;">
+                        <strong>Story:</strong> Transitioned from frontend interfaces to complex backend systems.<br>
+                        <strong>Learning:</strong> Node.js, databases, and API architectures.<br>
+                        <strong>Challenge:</strong> State management and data synchronization at scale.<br>
+                        <strong>Achievement:</strong> Built scalable multi-user platforms.<br>
+                        <strong>Impact:</strong> Enabled end-to-end product delivery capability.
+                    </p>
+                </div>
+                
+                <div class="eco-timeline-node">
+                    <div class="eco-timeline-date">PHASE 03 // INTELLIGENCE</div>
+                    <h4 class="eco-timeline-title">AI Integration</h4>
+                    <p style="color: var(--eco-text-muted); max-width: 600px;">
+                        <strong>Story:</strong> Embraced machine learning models within web applications.<br>
+                        <strong>Learning:</strong> Neural networks, LLMs, and intelligent automation.<br>
+                        <strong>Challenge:</strong> Processing unstructured data into actionable UI states.<br>
+                        <strong>Achievement:</strong> MediBridge & Aris initiatives.<br>
+                        <strong>Impact:</strong> Brought human-centric AI directly to users' screens.
+                    </p>
+                </div>
+                
+                <div class="eco-timeline-node">
+                    <div class="eco-timeline-date">PHASE 04 // MASTERY</div>
+                    <h4 class="eco-timeline-title">Ecosystem Architecture</h4>
+                    <p style="color: var(--eco-text-muted); max-width: 600px;">
+                        <strong>Story:</strong> Moving beyond apps to fully integrated digital ecosystems.<br>
+                        <strong>Learning:</strong> Micro-frontends, advanced GSAP, enterprise UX.<br>
+                        <strong>Challenge:</strong> Maintaining extreme performance across massive DOM structures.<br>
+                        <strong>Achievement:</strong> This very platform.<br>
+                        <strong>Impact:</strong> A cohesive digital universe reflecting complete technical mastery.
+                    </p>
+                </div>
+                
+            </div>
+
+            <!-- Vertical Video & Image Showcase -->
+            <div style="position: sticky; top: 120px; display: flex; flex-direction: column; gap: 2rem;">
+                <div class="journey-video-wrapper gsap-reveal" style="position: relative; top: 0; margin-top: 0;">
+                    <video src="https://v1.pinimg.com/videos/mc/expMp4/af/56/b9/af56b99d02789d82c49eed04a17c9230_t1.mp4" 
+                           autoplay muted loop playsinline 
+                           style="width: 100%; height: auto; display: block; object-fit: cover;">
+                    </video>
+                </div>
+                <div class="journey-video-wrapper gsap-reveal" style="position: relative; top: 0; margin-top: 0;">
+                    <img src="https://i.pinimg.com/originals/10/57/8e/10578e4bbe86281d102e4e1b0f726037.gif" 
+                         loading="lazy" alt="Creative coding animation"
+                         style="width: 100%; height: auto; display: block; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Marquee Shared System -->
+    <div class="eco-marquee-wrapper">
+        <div class="eco-marquee-content">
+            <div class="eco-marquee-item"><i class="ri-edit-2-line"></i> Technical Author</div>
+            <div class="eco-marquee-item"><i class="ri-book-open-fill"></i> E-Book Creator</div>
+            <div class="eco-marquee-item"><i class="ri-code-s-slash-line"></i> Open Source Contributor</div>
+            <div class="eco-marquee-item"><i class="ri-lightbulb-flash-line"></i> Innovation Strategy</div>
+            <div class="eco-marquee-item"><i class="ri-quill-pen-line"></i> Content Architect</div>
+            <!-- Duplicate for infinite effect -->
+            <div class="eco-marquee-item"><i class="ri-edit-2-line"></i> Technical Author</div>
+            <div class="eco-marquee-item"><i class="ri-book-open-fill"></i> E-Book Creator</div>
+            <div class="eco-marquee-item"><i class="ri-code-s-slash-line"></i> Open Source Contributor</div>
+            <div class="eco-marquee-item"><i class="ri-lightbulb-flash-line"></i> Innovation Strategy</div>
+            <div class="eco-marquee-item"><i class="ri-quill-pen-line"></i> Content Architect</div>
+        </div>
+    </div>
+
+    <!-- Elegant Main Footer -->
+    <footer id="main-footer" class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="syne-heading">Yogesh Sharma</h2>
+                <p class="jakarta-text">Engineering the future through logic and design.</p>
+            </div>
+            <div class="footer-graphic">
+                <!-- Minimal Developer Workstation SVG -->
+                <svg class="dev-silhouette" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Desk -->
+                    <line x1="10" y1="80" x2="90" y2="80" stroke="#333" stroke-width="2"/>
+                    <!-- Laptop -->
+                    <path d="M25 80 L45 80 L42 75 L28 75 Z" fill="#444" />
+                    <rect x="30" y="60" width="10" height="15" fill="#111" stroke="#444" stroke-width="1.5"/>
+                    <rect class="screen-glow" x="31" y="61" width="8" height="11" fill="#fff" opacity="0.9"/>
+                    <!-- Developer Silhouette -->
+                    <path d="M60 65 Q55 55 45 60 Q42 70 42 80 L65 80 Q65 70 60 65 Z" fill="#888" />
+                    <circle cx="58" cy="50" r="7" fill="#888" />
+                </svg>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#about" class="magnetic-link jakarta-text" aria-label="Profile Section">Profile</a>
+                <a href="index.html#services" class="magnetic-link jakarta-text" aria-label="Platform Hub Section">Platform Hub</a>
+                <a href="index.html#contact" class="magnetic-link jakarta-text" aria-label="Connect Section">Connect</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="major-mono">&copy; 2026 YOGESH SHARMA. ALL SYSTEMS OPERATIONAL.</p>
+            <p class="major-mono sys-status"><span class="pulse-dot"></span> SECURE_CONNECTION</p>
+        </div>
+    </footer>
+
+
+
+    <!-- GSAP & Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="ecosystem.js"></script>
+</body>
+</html>

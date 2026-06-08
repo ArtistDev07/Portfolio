@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogesh Sharma | Elite Full-Stack Developer & UI/UX Designer</title>
+    <meta name="description"
+        content="Portfolio of Yogesh Sharma, an Elite Full-Stack Web Developer and Creative UI/UX Designer.">
+
+    <!-- Open Graph & Twitter Cards for SEO -->
+    <meta property="og:title" content="Yogesh Sharma | Elite Full-Stack Developer">
+    <meta property="og:description"
+        content="Portfolio of Yogesh Sharma, an Elite Full-Stack Web Developer and Creative UI/UX Designer.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yogesh Sharma | Elite Full-Stack Developer">
+    <meta name="twitter:description"
+        content="Portfolio of Yogesh Sharma, an Elite Full-Stack Web Developer and Creative UI/UX Designer.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Major+Mono+Display&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="loading">
+    <!-- SVG Noise Filter Definition -->
+    <svg style="display: none;">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.08 0" />
+        </filter>
+    </svg>
+
+    <div class="noise-overlay"></div>
+
+    <!-- Cinematic Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="loading-ticker" id="ticker">SYS.INIT // 00%</div>
+            <h1 class="preloader-name" id="preloader-name">
+                <span>Y</span><span>O</span><span>G</span><span>E</span><span>S</span><span>H</span>
+                <span class="space">&nbsp;</span>
+                <span>S</span><span>H</span><span>A</span><span>R</span><span>M</span><span>A</span>
+            </h1>
+            <div class="morph-logo">
+                <div class="vector-loop"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-logo">Y.S_</div>
+            <button class="mobile-toggle" aria-label="Toggle Navigation"
+                onclick="this.nextElementSibling.classList.toggle('nav-active')">
+                <i class="ri-menu-4-line"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#about" class="magnetic-link" aria-label="Profile Section">Profile</a>
+                <a href="#services" class="magnetic-link" aria-label="Platform Hub Section">Platform Hub</a>
+                <a href="#certifications" class="magnetic-link" aria-label="Credentials Section">Credentials</a>
+                <a href="#contact" class="magnetic-link" aria-label="Connect Section">Connect</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-grid">
+            <div class="hero-content">
+                <h1 class="hero-title avant-garde">ENGINEER <br><span class="outline-text"
+                        style="font-size: clamp(2rem, 11vw, 160px); display: block; margin-top: 0.5rem;">&
+                        CREATOR</span></h1>
+                <p class="hero-subtitle jakarta-text">Mastering the duality of technical excellence and business
+                    strategy.</p>
+                <div id="hero-action-group"
+                    style="display: flex; gap: 1.5rem; flex-wrap: wrap; position: relative; z-index: 50; margin-top: 2rem;">
+                    <a href="#services" class="btn-primary magnetic-link">Explore the Hub <i
+                            class="ri-arrow-right-line"></i></a>
+                    <a href="design-vault.html" class="btn-primary magnetic-link">WHO I AM <i
+                            class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+            <div class="marquee-container">
+                <div class="marquee" id="marquee">
+                    <span>FULL-STACK DEV</span><span>•</span><span>UI/UX
+                        DESIGN</span><span>•</span><span>CYBERSECURITY</span><span>•</span><span>AI/ML</span><span>•</span><span>SEO
+                        & MARKETING</span><span>•</span><span>FULL-STACK DEV</span><span>•</span><span>UI/UX
+                        DESIGN</span><span>•</span><span>CYBERSECURITY</span><span>•</span><span>AI/ML</span><span>•</span><span>SEO
+                        & MARKETING</span><span>•</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2 class="section-title avant-garde">PROFILE_</h2>
+                <div class="about-layout-split">
+                    <div class="about-typography-anim cinematic-text-zone">
+                        <h3 class="syne-heading animate-text cinematic-heading">About Yogesh Sharma</h3>
+                        <p class="jakarta-text animate-text">I am a software engineer and AI enthusiast currently
+                            pursuing my B.Tech in Computer Science in Indore. My core focus is on leveraging <span
+                                class="cine-glow">artificial intelligence</span> to build scalable, human-centric
+                            applications.</p>
+
+                        <p class="jakarta-text animate-text">Currently, I am dedicating my time to two major <span
+                                class="cine-highlight">HealthTech</span> initiatives: <span
+                                class="cine-glow">MediBridge</span>, an AI-driven platform enhancing rural access to
+                            urban healthcare, and <span class="cine-glow">Aris</span>, a next-generation <span
+                                class="cine-highlight">AI medical assistant</span> featuring multi-language support and
+                            dynamic 3D interactions.</p>
+
+                        <p class="jakarta-text animate-text">Beyond my primary projects, I am heavily involved in the
+                            developer community—contributing to open-source initiatives like SSoC, participating in
+                            hackathons across the country, and authoring an e-book focused on leveraging AI in the
+                            modern economy.</p>
+
+                        <p class="jakarta-text animate-text">My technical stack spans <span class="cine-highlight">Java,
+                                Python, C#, and Node.js</span>, allowing me to bring complex, AI-integrated ideas to
+                            life from the ground up.</p>
+
+                        <div class="animate-text" style="margin-top: 2rem;">
+                            <a href="design-vault.html" class="btn-primary magnetic-link">WHO I AM <i
+                                    class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="hologram-container">
+                        <canvas id="hologram-canvas"></canvas>
+                        <div class="hologram-scanline"></div>
+                        <div class="hologram-overlay-text major-mono">SYS_CORE // AI_DEV</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-grid">
+
+                <div class="bento-box edu-box bg-matrix">
+                    <i class="ri-graduation-cap-line bento-icon"></i>
+                    <h4 class="major-mono">Bachelor of Technology (B.Tech)</h4>
+                    <p class="jakarta-text edu-highlight">IPS Academy, Indore</p>
+                </div>
+                <div class="bento-box highlight-box bg-dots">
+                    <i class="ri-trophy-line bento-icon"></i>
+                    <h4 class="syne-heading">Highlights</h4>
+                    <p class="jakarta-text">Tata Crucible Corporate Quiz 2025 Participant. Expertise in UI/UX, SEO, PPC,
+                        ROI tracking, & Google Analytics.</p>
+                </div>
+            </div>
+
+            <!-- APPENDED: Intellectual Genesis Ecosystem -->
+            <div class="intellectual-genesis-grid">
+                <div class="genesis-block genesis-item">
+                    <h5 class="major-mono text-highlight">Academic Matrix</h5>
+                    <p class="jakarta-text">Bachelor of Technology (B.Tech), Institute of Engineering and Science, IPS
+                        Academy, Indore, Madhya Pradesh.</p>
+                </div>
+                <div class="genesis-block genesis-item">
+                    <h5 class="major-mono text-highlight">Professional Persona</h5>
+                    <p class="jakarta-text">Alchemist <i class="ri-flask-line"></i> , Developer & Creator <i
+                            class="ri-braces-line"></i> , Full-Stack Software Engineer.</p>
+                </div>
+                <div class="genesis-block genesis-full genesis-item">
+                    <h5 class="major-mono text-highlight">Active Trajectory (Current Operations)</h5>
+                    <p class="jakarta-text">Standing at the intersection of technical engineering execution and rigorous
+                        business growth strategy. Currently engineering robust, end-to-end full-stack software
+                        architectures <i class="ri-server-line"></i>, deploying advanced machine learning models with
+                        deep engineering logic (2 ECTS university-level AI coursework completed) <i
+                            class="ri-brain-line"></i>, managing cryptographic parameters and identifying surface
+                        vulnerabilities via validated cybersecurity protocols (Certified by MeitY ISEA) <i
+                            class="ri-shield-keyhole-line"></i>, and scaling organic/paid digital marketing visibility
+                        backed by a certified 96% optimization score <i class="ri-line-chart-fill"></i>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Hub Section -->
+        <section id="services" class="services">
+            <div class="section-header">
+                <h2 class="section-title avant-garde">PLATFORM HUB_</h2>
+                <p class="jakarta-text">Hover to engage systems.</p>
+            </div>
+            <div class="hub-dashboard hub-panel">
+                <div class="dashboard-grid-bg"></div>
+
+                <!-- Terminal Window -->
+                <div class="hub-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="terminal-title major-mono">system_kernel // v2.0.4</div>
+                    </div>
+                    <div class="terminal-body jakarta-text">
+                        <div id="typewriter-text"></div>
+                        <span class="terminal-cursor">_</span>
+                    </div>
+                </div>
+
+                <!-- AI System Visualizer -->
+                <div class="hub-ai-visualizer">
+                    <div class="ai-core-graphic">
+                        <div class="ai-ring ring-1"></div>
+                        <div class="ai-ring ring-2"></div>
+                        <div class="ai-ring ring-3"></div>
+                        <div class="ai-core-center">
+                            <i class="ri-cpu-line"></i>
+                        </div>
+                    </div>
+                    <div class="ai-status-labels">
+                        <div class="status-badge"><span class="pulse-dot"></span> NEURAL_NET: ACTIVE</div>
+                        <div class="status-badge"><span class="pulse-dot"></span> DATA_STREAM: SYNCED</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPENDED: The Workspace Environment -->
+        <section id="workspace" class="workspace section-grid">
+            <div class="section-header">
+                <h2 class="section-title avant-garde">WORKSPACE CANVAS_</h2>
+                <p class="jakarta-text">Interactive Capability Ecosystem.</p>
+            </div>
+            <div class="workspace-grid bento-layout-system">
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Website Designing</h4>
+                    <p class="jakarta-text">Crafting beautiful avant-garde digital storefronts and robust web portals
+                        that load in milliseconds.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Content Creation</h4>
+                    <p class="jakarta-text">Developing highly engaging text, video scripts, and multi-format editorial
+                        content designed to establish technical authority.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Product Development</h4>
+                    <p class="jakarta-text">Translating loose business and functional criteria into completely validated
+                        full-stack software releases.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Branding</h4>
+                    <p class="jakarta-text">Formulating strict typographic systems, high-contrast monochrome design
+                        guidelines, and unique human-focused visual identities.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Marketing & SEO</h4>
+                    <p class="jakarta-text">Executing granular pay-per-click (PPC) campaigns and search engine
+                        strategies driven by mathematically clean optimization.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Graphics Design</h4>
+                    <p class="jakarta-text">Designing sleek vector assets, layout decks, and high-impact abstract
+                        posters that communicate intricate concepts.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Presentation Arch</h4>
+                    <p class="jakarta-text">Structuring high-stake corporate decks, pitches, and technical slides that
+                        command attention and drive business outcomes.</p>
+                </div>
+                <div class="workspace-box">
+                    <h3 class="major-mono capability-map">[ CAPABILITY MAP ] +</h3>
+                    <h4 class="syne-heading">Tech Blog Writing</h4>
+                    <p class="jakarta-text">Combining technical clarity with search-friendly architectures to produce
+                        high-ranking content that converts searchers into users.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications section-grid">
+            <div class="section-header">
+                <h2 class="section-title avant-garde">VALIDATED CREDENTIALS_</h2>
+            </div>
+            <div class="cert-stats">
+                <div class="stat-item">
+                    <span class="stat-number major-mono">25+</span>
+                    <span class="stat-label syne-heading">Industry Certifications</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number major-mono">96%</span>
+                    <span class="stat-label syne-heading">Digital Marketing Score</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number major-mono">02</span>
+                    <span class="stat-label syne-heading">ECTS Univ AI Coursework</span>
+                </div>
+            </div>
+
+            <!-- APPENDED: Enhanced Certification Matrix -->
+            <div class="filter-toolbar">
+                <button class="filter-tag active" data-filter="all">[ ALL ]</button>
+                <button class="filter-tag" data-filter="programming">[ PROGRAMMING ]</button>
+                <button class="filter-tag" data-filter="ai">[ AI/ML ]</button>
+                <button class="filter-tag" data-filter="cloud">[ CLOUD ]</button>
+                <button class="filter-tag" data-filter="cybersecurity">[ CYBERSECURITY ]</button>
+                <button class="filter-tag" data-filter="marketing">[ MARKETING ]</button>
+            </div>
+
+            <div class="cert-list">
+                <div class="cert-item cert-item-enhanced" data-category="cybersecurity"
+                    data-url="https://www.credly.com/users/yogesh-sharma.3d7eb5db">
+                    <div>
+                        <div class="cert-title syne-heading">MeitY ISEA Cybersecurity Practitioner</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Information Security Education and Awareness
+                            (MeitY, Government of India)</div>
+                        <div class="cert-metrics major-mono">Metrics: 18+ CEUs achieved</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="marketing"
+                    data-url="https://www.credly.com/users/yogesh-sharma.3d7eb5db">
+                    <div>
+                        <div class="cert-title syne-heading">Advanced Digital Marketing Specialist</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Industry Academy Consortium</div>
+                        <div class="cert-metrics major-mono">Metrics: 96% Final Exam Score</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai"
+                    data-url="https://www.credly.com/users/yogesh-sharma.3d7eb5db">
+                    <div>
+                        <div class="cert-title syne-heading">Artificial Intelligence & ML</div>
+                        <div class="cert-org jakarta-text">University Level (2 ECTS)</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="cloud"
+                    data-url="https://www.credly.com/users/yogesh-sharma.3d7eb5db">
+                    <div>
+                        <div class="cert-title syne-heading">Full-Stack Cloud Architecture</div>
+                        <div class="cert-org jakarta-text">Multiple Providers</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="marketing" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Google UX Design</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Coursera</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Google AI Essentials</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Coursera</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Google Prompting Essentials</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Coursera</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Career Essentials in Generative AI</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Microsoft &amp; LinkedIn</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Introduction to Artificial Intelligence (2023)</div>
+                        <div class="cert-org jakarta-text">Issuing Body: LinkedIn Learning</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Ethics in the Age of Generative AI</div>
+                        <div class="cert-org jakarta-text">Issuing Body: LinkedIn Learning</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Streamlining Your Work with Microsoft Copilot</div>
+                        <div class="cert-org jakarta-text">Issuing Body: LinkedIn Learning</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Generative AI: The Evolution of Thoughtful Online Search
+                        </div>
+                        <div class="cert-org jakarta-text">Issuing Body: LinkedIn Learning</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Elements of AI</div>
+                        <div class="cert-org jakarta-text">Issuing Body: University of Helsinki</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="programming" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Full Stack Open</div>
+                        <div class="cert-org jakarta-text">Issuing Body: University of Helsinki</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="programming" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Java Programming</div>
+                        <div class="cert-org jakarta-text">Issuing Body: University of Helsinki</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="ai" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Ethics of AI</div>
+                        <div class="cert-org jakarta-text">Issuing Body: University of Helsinki</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="programming" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Web Development Fundamentals</div>
+                        <div class="cert-org jakarta-text">Issuing Body: IBM SkillsBuild</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="cybersecurity" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Penetration Testing and Ethical Hacking</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Cybrary</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="cloud" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">CompTIA IT Fundamentals</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Cybrary</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="marketing" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">A2Z Of Finance: Finance Beginner Course</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Elearnmarkets</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+                <div class="cert-item cert-item-enhanced" data-category="marketing" data-url="#">
+                    <div>
+                        <div class="cert-title syne-heading">Stock Markets Made Easy</div>
+                        <div class="cert-org jakarta-text">Issuing Body: Elearnmarkets</div>
+                    </div>
+                    <div class="verify-node"><i class="ri-shield-check-line"></i> Verify</div>
+                </div>
+            </div>
+
+            <div class="credly-integration">
+                <a href="https://www.credly.com/users/yogesh-sharma.3d7eb5db/edit#credly" target="_blank"
+                    class="btn-secondary magnetic-link">
+                    Verify on Credly <i class="ri-external-link-line"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Connection Page / Contact -->
+        <section id="contact" class="connection-page brutalist-frame">
+            <div class="connection-inner">
+                <h2 class="connection-title bona-nova-title">We are ready to connect. <br> Speak directly with me</h2>
+
+                <div class="contact-layout">
+                    <!-- Form -->
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name" class="major-mono">IDENTIFIER</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email" class="major-mono">COMM_VECTOR (EMAIL)</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required placeholder=" " rows="4"></textarea>
+                            <label for="message" class="major-mono">TRANSMISSION_DATA</label>
+                        </div>
+                        <!-- Prevent Captcha redirect for AJAX -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <button type="submit" class="btn-submit magnetic-link">INITIATE HANDSHAKE</button>
+                        <div id="form-status" class="form-status jakarta-text"></div>
+                    </form>
+
+                    <!-- Social Vectors -->
+                    <div class="social-vectors">
+                        <h3 class="syne-heading mb-4">SOCIAL_VECTORS</h3>
+                        <a href="https://github.com/ArtistDev07" target="_blank" class="social-link magnetic-link"
+                            aria-label="GitHub Profile">
+                            <i class="ri-github-fill"></i> <span class="major-mono">ArtistDev07</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/yogesh-sharma-9312022b9/" target="_blank"
+                            class="social-link magnetic-link" aria-label="LinkedIn Profile">
+                            <i class="ri-linkedin-fill"></i> <span class="major-mono">Yogesh Sharma</span>
+                        </a>
+                        <a href="https://x.com/VisionX_07" target="_blank" class="social-link magnetic-link"
+                            aria-label="Twitter Profile">
+                            <i class="ri-twitter-x-line"></i> <span class="major-mono">@VisionX_07</span>
+                        </a>
+                        <a href="https://www.behance.net/yogeshsharma207" target="_blank"
+                            class="social-link magnetic-link" aria-label="Behance Portfolio">
+                            <i class="ri-behance-fill"></i> <span class="major-mono">yogeshsharma207</span>
+                        </a>
+                        <a href="https://www.credly.com/users/yogesh-sharma.3d7eb5db/edit#credly" target="_blank"
+                            class="social-link magnetic-link" aria-label="Credly Certifications">
+                            <i class="ri-shield-check-fill"></i> <span class="major-mono">Credly Profile</span>
+                        </a>
+                        <a href="https://www.instagram.com/code.with.devx/" target="_blank"
+                            class="social-link magnetic-link" aria-label="Instagram Profile">
+                            <i class="ri-instagram-fill"></i> <span class="major-mono">@code.with.devx</span>
+                        </a>
+                        <a href="https://learn.microsoft.com/en-us/users/yogeshsharma-9810/" target="_blank"
+                            class="social-link magnetic-link" aria-label="Microsoft Learn Profile">
+                            <i class="ri-microsoft-fill"></i> <span class="major-mono">yogeshsharma-9810</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infinite Runner Section -->
+        <section id="runner-game" class="runner-section">
+            <canvas id="runner-canvas"></canvas>
+            <div class="runner-overlay">
+                <p class="major-mono runner-text">SYSTEM_IDLE // RUN_SIMULATION</p>
+            </div>
+        </section>
+
+        <!-- Elegant Main Footer -->
+        <footer id="main-footer" class="main-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2 class="syne-heading">Yogesh Sharma</h2>
+                    <p class="jakarta-text">Engineering the future through logic and design.</p>
+                </div>
+                <div class="footer-graphic">
+                    <!-- Minimal Developer Workstation SVG -->
+                    <svg class="dev-silhouette" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Desk -->
+                        <line x1="10" y1="80" x2="90" y2="80" stroke="#333" stroke-width="2" />
+                        <!-- Laptop -->
+                        <path d="M25 80 L45 80 L42 75 L28 75 Z" fill="#444" />
+                        <rect x="30" y="60" width="10" height="15" fill="#111" stroke="#444" stroke-width="1.5" />
+                        <rect class="screen-glow" x="31" y="61" width="8" height="11" fill="#fff" opacity="0.9" />
+                        <!-- Developer Silhouette -->
+                        <path d="M60 65 Q55 55 45 60 Q42 70 42 80 L65 80 Q65 70 60 65 Z" fill="#888" />
+                        <circle cx="58" cy="50" r="7" fill="#888" />
+                    </svg>
+                </div>
+                <div class="footer-links">
+                    <a href="#about" class="magnetic-link jakarta-text" aria-label="Profile Section">Profile</a>
+                    <a href="#services" class="magnetic-link jakarta-text" aria-label="Platform Hub Section">Platform
+                        Hub</a>
+                    <a href="#contact" class="magnetic-link jakarta-text" aria-label="Connect Section">Connect</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="major-mono">&copy; 2026 YOGESH SHARMA. ALL SYSTEMS OPERATIONAL.</p>
+                <p class="major-mono sys-status"><span class="pulse-dot"></span> SECURE_CONNECTION</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- APPENDED: Verification Modal -->
+    <div id="verify-modal" class="verification-modal">
+        <div class="modal-content">
+            <button class="modal-close major-mono">[ CLOSE ]</button>
+            <div class="modal-body">
+                <h3 id="modal-title" class="syne-heading"></h3>
+                <p id="modal-desc" class="jakarta-text"></p>
+                <a id="modal-link" href="#" target="_blank" class="btn-primary magnetic-link"
+                    style="margin-top: 2rem;">Access Official Record <i class="ri-external-link-line"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

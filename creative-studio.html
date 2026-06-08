@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Studio | Y.S_ Ecosystem</title>
+    <meta name="description" content="Creative Studio: Branding, Graphics, and Product Design by Yogesh Sharma.">
+    <!-- Open Graph & Twitter Cards for SEO -->
+    <meta property="og:title" content="Creative Studio | Y.S_ Ecosystem">
+    <meta property="og:description" content="Creative Studio: Branding, Graphics, and Product Design by Yogesh Sharma.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Creative Studio | Y.S_ Ecosystem">
+    <meta name="twitter:description" content="Creative Studio: Branding, Graphics, and Product Design by Yogesh Sharma.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@600;800&family=Rubik+Maze&family=Jim+Nightshade&family=Mate+SC&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!-- Base Styles & Ecosystem Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ecosystem.css">
+
+    <style>
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .brand-slot {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--eco-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: var(--transition-snappy);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-slot:hover {
+            border-color: var(--eco-text);
+            background: #111;
+        }
+        .brand-slot .hover-data {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.9);
+            transform: translateY(100%);
+            transition: var(--transition-snappy);
+        }
+        .brand-slot:hover .hover-data {
+            transform: translateY(0);
+        }
+
+        .graphic-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-auto-rows: 150px;
+            gap: 10px;
+        }
+        .graphic-frame {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .graphic-frame:hover {
+            border-color: #333;
+        }
+        .graphic-frame:hover::after {
+            content: '+';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+        }
+        /* Make some frames larger for variety */
+        .graphic-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .graphic-wide {
+            grid-column: span 2;
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .product-image {
+            width: 100%;
+            height: 400px;
+            background: #111;
+            border: 1px solid var(--eco-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 1024px) {
+            .product-showcase { grid-template-columns: 1fr; gap: 2rem; }
+            .product-image { height: 250px; }
+            .graphic-gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); grid-auto-rows: 100px; }
+            .graphic-large, .graphic-wide { grid-column: span 1; grid-row: span 1; }
+            .brand-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body class="ecosystem-page font-mate-sc">
+    
+    <header class="eco-container">
+        <canvas id="canvas-cs-infinity" class="canvas-container-3d"></canvas>
+        <h1 class="eco-title gsap-reveal">CREATIVE STUDIO</h1>
+        <h2 class="eco-subtitle gsap-reveal font-rubik-maze">Branding • Graphics • Product Design</h2>
+    </header>
+
+    <!-- SECTION A: BRAND DESIGN -->
+    <section class="eco-container eco-section">
+        <div class="eco-section-title gsap-reveal">
+            <h3>I. Brand Design</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_IDENTITY</span>
+        </div>
+        
+        <p class="gsap-reveal" style="color: var(--eco-text-muted); margin-bottom: 2rem; font-family: var(--font-code);">[ DISPLAYING 50+ BRAND SLOTS ]</p>
+        
+        <div class="brand-grid">
+            <script>
+                const imageLinks = [
+                    "https://i.pinimg.com/1200x/f1/fe/99/f1fe992982f2f5607262fd6a6cf891a5.jpg",
+                    "https://i.pinimg.com/736x/59/b2/ce/59b2ced628f1d66bb1959d71e40250d4.jpg",
+                    "https://i.pinimg.com/1200x/1c/6d/ca/1c6dcaffa307eced0f17c5280cb36932.jpg",
+                    "https://i.pinimg.com/736x/db/24/82/db2482c0945a41d71bd99423d2b8fcdb.jpg",
+                    "https://i.pinimg.com/1200x/9b/d7/8e/9bd78ea2e45224b0c3d4517cdb5a9c03.jpg",
+                    "https://i.pinimg.com/736x/54/21/90/542190972a13ec69c480c6b14a0207f3.jpg",
+                    "https://i.pinimg.com/736x/51/39/0d/51390da46f094dd54b037e580c1686d3.jpg",
+                    "https://i.pinimg.com/1200x/47/47/64/4747645b620c88e70f899b84e6efff47.jpg",
+                    "https://i.pinimg.com/1200x/9f/5a/7e/9f5a7e1ee3967d391ffbc80121b73313.jpg",
+                    "https://i.pinimg.com/1200x/2b/97/e6/2b97e633ae1b4af0ed0f316e9101bf2e.jpg",
+                    "https://i.pinimg.com/1200x/c6/05/f5/c605f5542818d4bea1df156d80831f9f.jpg",
+                    "https://i.pinimg.com/1200x/56/cb/11/56cb11895225c6c9179cbe50d4343d01.jpg",
+                    "https://i.pinimg.com/736x/9a/48/ea/9a48eaac1f7344224c688f22b4a0c2f1.jpg",
+                    "https://i.pinimg.com/1200x/fa/a1/1d/faa11d4495347cbd6d90bbd17d6ef7c5.jpg",
+                    "https://i.pinimg.com/1200x/b6/5e/5b/b65e5b751b38133ee48a483377b7a547.jpg",
+                    "https://i.pinimg.com/1200x/a4/42/09/a442097f1d4df2952b9d396855bc8f43.jpg",
+                    "https://i.pinimg.com/1200x/f9/c3/95/f9c395a45a3a17a34d1067b249454fc6.jpg",
+                    "https://i.pinimg.com/1200x/1d/74/5f/1d745fe2511eb0ae12b2418dc1b850f8.jpg",
+                    "https://i.pinimg.com/1200x/0c/84/c4/0c84c4a8c7cda50542149c6a36f9b631.jpg",
+                    "https://i.pinimg.com/1200x/b8/88/54/b888547766608b4fa1b294bdedff3a52.jpg",
+                    "https://i.pinimg.com/1200x/39/bb/9e/39bb9eff586fe9ebdf7a0c3dba1d18a8.jpg",
+                    "https://i.pinimg.com/736x/2a/bd/10/2abd107881d983ed923ea7f31e7caea8.jpg",
+                    "https://i.pinimg.com/1200x/44/88/47/4488471e44db516a185d5069bd973dbf.jpg",
+                    "https://images-platform.99static.com/q5m0VeLZZIeKtD5wvfj5xRl23w8=/372x372:1508x1508/fit-in/99designs-contests-attachments/64/64384/attachment_64384612",
+                    "https://cms.cloudinary.vpsvc.com/image/upload/c_scale,dpr_auto,f_auto,w_auto/vista-logos-pages/en-US/logomaker-gen-ai/logo-examples/retail/bargain.webp",
+                    "https://i.pinimg.com/736x/dd/08/dd/dd08dd06a720482212bbb5f915b58d4e.jpg",
+                    "https://i.pinimg.com/736x/28/08/bd/2808bdb251440239b698249a9fbb4184.jpg",
+                    "https://i.pinimg.com/1200x/93/cf/ee/93cfee647720efbc623d094f069bd991.jpg",
+                    "https://i.pinimg.com/1200x/e5/63/21/e56321a950d3a268e2ae426da86c8621.jpg",
+                    "https://i.pinimg.com/1200x/36/ef/90/36ef90ef879ce50eda959c901ede880d.jpg",
+                    "https://i.pinimg.com/1200x/92/f5/8b/92f58b02d756fad9eb952cf079f2fe07.jpg",
+                    "https://i.pinimg.com/736x/30/a7/c5/30a7c5fc35f82c39a5e411baaf008d6c.jpg",
+                    "https://i.pinimg.com/1200x/c7/0c/a4/c70ca4fca165e187c4b5d969e9680c09.jpg",
+                    "https://i.pinimg.com/1200x/42/33/d3/4233d3b342ee6095ce075cd1b29d5ad4.jpg",
+                    "https://i.pinimg.com/736x/ae/1e/01/ae1e015df42742dbf01bcfc5bfb95d73.jpg",
+                    "https://i.pinimg.com/736x/a5/11/de/a511de5be303e807c622d212db24f900.jpg",
+                    "https://i.pinimg.com/1200x/fa/ad/46/faad46146e01a852d4bb86b6058ec45a.jpg",
+                    "https://i.pinimg.com/736x/6f/a9/ba/6fa9ba39ade38394d15e410fca1b819a.jpg",
+                    "https://i.pinimg.com/1200x/36/ef/90/36ef90ef879ce50eda959c901ede880d.jpg",
+                    "https://i.pinimg.com/736x/ff/d4/b7/ffd4b7cee3aa1ff8629572ba0216b861.jpg",
+                    "https://i.pinimg.com/1200x/28/a0/3c/28a03c1899d866a7f81a0651a3cbae35.jpg",
+                    "https://i.pinimg.com/1200x/fe/5b/ba/fe5bbabb03b66c67ede6857e4721216e.jpg",
+                    "https://i.pinimg.com/1200x/13/9d/e1/139de12cef5facbe28f37413f3dded69.jpg",
+                    "https://i.pinimg.com/1200x/49/af/c4/49afc4697311cfe9606ae3111237812a.jpg",
+                    "https://i.pinimg.com/736x/13/7e/d9/137ed97a4880577cb6e05872b1be4eba.jpg",
+                    "https://i.pinimg.com/1200x/54/2b/53/542b53c24e1b6afb38d53b7e4c2b5733.jpg",
+                    "https://i.pinimg.com/1200x/11/f3/31/11f331c8fa18c7914d761f37cb6614d0.jpg",
+                    "https://i.pinimg.com/736x/c7/07/c0/c707c0a26ff4cc1faabe23b0b5faaa8a.jpg",
+                    "https://i.pinimg.com/736x/51/09/e2/5109e20935d5306194f2b5cf05b76639.jpg",
+                    "https://i.pinimg.com/736x/1f/08/a2/1f08a2dd4833de7ce8585b7ca26cdcef.jpg",
+                    "https://i.pinimg.com/1200x/72/e9/74/72e974632dceff28b28a5f7e3816976c.jpg",
+                    "https://i.pinimg.com/736x/90/a1/95/90a195c10737c8f5db752b274026509d.jpg",
+                    "https://i.pinimg.com/736x/51/09/e2/5109e20935d5306194f2b5cf05b76639.jpg",
+                    "https://i.pinimg.com/736x/9b/0c/27/9b0c270983f6cdf11a75d534fc38babb.jpg",
+                    "https://i.pinimg.com/1200x/af/36/f2/af36f2c190e2deac3090ba6c6e7d8b53.jpg"
+                ];
+
+                // Generate 50 brand slots
+                document.write(Array.from({length: 50}).map((_, i) => {
+                    const img = imageLinks[i];
+                    const contentHTML = img ? 
+                        `<img src="${img}" loading="lazy" alt="Brand visual" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; opacity: 0.8; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='0.8'">` : 
+                        `<i class="ri-triangle-line" style="font-size: 2.5rem; color: rgba(255,255,255,0.3); z-index: 0; position: absolute;"></i>`;
+                    
+                    return `
+                    <div class="brand-slot gsap-reveal">
+                        ${contentHTML}
+                        <div class="hover-data" style="z-index: 1;">
+                            <div style="font-family: var(--font-code); font-size: 0.8rem; margin-bottom: 0.3rem;">Brand_${String(i+1).padStart(3, '0')}</div>
+                            <div style="font-size: 0.75rem; color: #888;">Objective: Identity System</div>
+                        </div>
+                    </div>
+                    `;
+                }).join(''));
+            </script>
+        </div>
+    </section>
+
+    <!-- SECTION B: GRAPHIC DESIGN -->
+    <section class="eco-container eco-section">
+        <div class="eco-section-title gsap-reveal">
+            <h3>II. Graphic Design</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_VECTORS</span>
+        </div>
+        
+        <p class="gsap-reveal" style="color: var(--eco-text-muted); margin-bottom: 2rem; font-family: var(--font-code);">[ DISPLAYING 70+ GALLERY FRAMES ]</p>
+        
+        <div class="graphic-gallery">
+            <script>
+                const graphicImageLinks = [
+                    "https://i.pinimg.com/1200x/57/21/56/572156f356e56fe7a058fb91bd7e022b.jpg",
+                    "https://i.pinimg.com/1200x/13/53/cc/1353cc669106be83e40dfe1e265e5e53.jpg",
+                    "https://i.pinimg.com/736x/b5/c0/27/b5c027c50c6a184b68086ff8acff2f97.jpg",
+                    "https://i.pinimg.com/736x/55/09/8d/55098d914eded45e6c9e5b46490ee859.jpg",
+                    "https://i.pinimg.com/736x/5e/e4/95/5ee495f288135318a9f84ca05f911b60.jpg",
+                    "https://i.pinimg.com/736x/0e/80/12/0e8012c605ea4c0ab5db112ea2dd0cc0.jpg",
+                    "https://i.pinimg.com/736x/89/fe/26/89fe26657114ad0df6a2fcbc03d1c3ec.jpg",
+                    "https://i.pinimg.com/736x/41/73/c3/4173c3760c1b7999c9cc70ce25d541a2.jpg",
+                    "https://i.pinimg.com/1200x/fa/bb/a2/fabba207339f04c2ec6bdfa9403a2616.jpg",
+                    "https://i.pinimg.com/736x/3d/11/49/3d1149e1edca703d829b0b8db8cfed79.jpg",
+                    "https://i.pinimg.com/736x/35/d7/4e/35d74eeb23388495a46166a8910ffe65.jpg",
+                    "https://i.pinimg.com/1200x/c5/89/d4/c589d46e3031ce51a932c198939cc260.jpg",
+                    "https://i.pinimg.com/736x/17/1b/25/171b253006ce9ace9b2402446846de5d.jpg",
+                    "https://i.pinimg.com/1200x/e4/f0/ee/e4f0eeda16f18248ab100ef52c9b88b9.jpg",
+                    "https://i.pinimg.com/1200x/d6/2b/a3/d62ba3094c22f40c7cf2e7e61adf2872.jpg",
+                    "https://i.pinimg.com/1200x/ce/8a/1d/ce8a1d211ae38f6cf13ef8d93d700d37.jpg",
+                    "https://i.pinimg.com/1200x/c8/14/3d/c8143d4f565efb867f6565eb6c690fb6.jpg",
+                    "https://i.pinimg.com/736x/66/6c/ed/666ced5e2a06e216f6bc514c5c0c9266.jpg",
+                    "https://i.pinimg.com/736x/99/48/11/9948117d17d238041bc0be1b1e4c2251.jpg",
+                    "https://i.pinimg.com/736x/73/7a/90/737a9051311fd6168d7b81064359b527.jpg",
+                    "https://i.pinimg.com/736x/53/1b/02/531b02b69752ed0db71afac55df23b81.jpg",
+                    "https://i.pinimg.com/736x/15/26/0a/15260ac800b78594d08bffd166d7755d.jpg",
+                    "https://i.pinimg.com/736x/de/30/4d/de304d28e54d48f1e64d7a42ee6b7c34.jpg",
+                    "https://i.pinimg.com/736x/a7/9e/ac/a79eac31072f4dc04d200057f8e71c86.jpg",
+                    "https://i.pinimg.com/1200x/79/67/ee/7967ee59c2ceb1b709a84bd47d532560.jpg",
+                    "https://i.pinimg.com/1200x/61/8e/3c/618e3c6208a7b80774fd7feaa7a2ee8c.jpg",
+                    "https://i.pinimg.com/736x/33/f4/4f/33f44f4d38694bc7dc66d67f6213f7a2.jpg",
+                    "https://i.pinimg.com/736x/73/2b/6d/732b6d653d96c3efd569509dacff87a9.jpg",
+                    "https://i.pinimg.com/1200x/9c/4a/a4/9c4aa4e530538af389e4e5747603e8b2.jpg",
+                    "https://i.pinimg.com/1200x/c6/e6/87/c6e687a6c3636dc602ba3fd57cae8be4.jpg",
+                    "https://i.pinimg.com/736x/a4/f9/59/a4f959291dd4ea3f116e07294b4048b4.jpg",
+                    "https://i.pinimg.com/736x/26/af/da/26afdaca6aa76a13010ad2123c6956e3.jpg",
+                    "https://i.pinimg.com/736x/ce/dd/7e/cedd7e6b940e20c462d5d5acc277f03c.jpg",
+                    "https://i.pinimg.com/736x/39/52/bb/3952bbb53aa6985248723de116dd5af2.jpg",
+                    "https://i.pinimg.com/736x/c8/85/c2/c885c23d95a4569c74f75be4e6111fcd.jpg",
+                    "https://i.pinimg.com/1200x/1f/1d/46/1f1d46691e57ee0f4646aeac1d301d3d.jpg",
+                    "https://i.pinimg.com/1200x/45/0c/08/450c08fa895c7083d8d00227212d6a8a.jpg",
+                    "https://i.pinimg.com/736x/50/b2/ae/50b2ae20f52658a9ba497982461701ff.jpg",
+                    "https://i.pinimg.com/736x/07/ed/60/07ed60558885206c81a936ca08d4c359.jpg",
+                    "https://i.pinimg.com/1200x/f2/88/46/f288464a058c468ce638877474664289.jpg",
+                    "https://i.pinimg.com/1200x/fc/15/cb/fc15cb477affb740f0089e9a1b02b907.jpg",
+                    "https://i.pinimg.com/1200x/2f/b9/af/2fb9af916ada90ad3dad8ffce5d7133b.jpg",
+                    "https://i.pinimg.com/736x/7b/4b/c7/7b4bc714e9d1dc892a2ae2c4ccdf7b94.jpg",
+                    "https://i.pinimg.com/1200x/25/4b/58/254b582e922179f9cbc96e43d43ccf30.jpg",
+                    "https://i.pinimg.com/1200x/df/a1/ed/dfa1ed3c86c2b83b1b921f0bd84c47b3.jpg",
+                    "https://i.pinimg.com/736x/6c/02/c4/6c02c42fe0330d2396e3a534d2b32d65.jpg",
+                    "https://i.pinimg.com/1200x/84/f8/3a/84f83ac8159eafec29c1051c2f5cf03b.jpg",
+                    "https://i.pinimg.com/1200x/af/b0/73/afb073a7055449cc89110ae6c0c36d48.jpg",
+                    "https://i.pinimg.com/736x/66/e9/92/66e99232cf39e6e9e9b174d8ac5b9395.jpg",
+                    "https://i.pinimg.com/736x/01/9e/e8/019ee86f2fcbead3ea8532aebf5536e7.jpg",
+                    "https://i.pinimg.com/736x/6a/6b/52/6a6b52b00a46a3b10f7de3c4fb17964a.jpg",
+                    "https://i.pinimg.com/736x/1a/d2/d3/1ad2d3479a4bd855ccb9c6d087c65acf.jpg",
+                    "https://i.pinimg.com/736x/ec/7f/33/ec7f33d22a413c9e897d7f1d69c0313d.jpg",
+                    "https://i.pinimg.com/736x/cb/d9/eb/cbd9eb3f177e945bed1bf45c9c6357b9.jpg",
+                    "https://i.pinimg.com/736x/2f/54/55/2f545586d75d369145eada37c6f72681.jpg",
+                    "https://i.pinimg.com/736x/3e/6d/06/3e6d06720f1cb2ef742b7bc1764040eb.jpg",
+                    "https://i.pinimg.com/736x/1d/86/a8/1d86a8ea22cd6e3c302e8b396e994add.jpg",
+                    "https://i.pinimg.com/736x/32/7d/50/327d50a76cf954ea0f87d0bb1961988d.jpg",
+                    "https://i.pinimg.com/736x/d7/84/ae/d784ae3f52e0502b5ce30cc664d86e6e.jpg",
+                    "https://i.pinimg.com/1200x/1b/e3/9d/1be39d682ab51914e370db8112840774.jpg",
+                    "https://i.pinimg.com/736x/c4/d6/99/c4d6998437e51b932364cf198dec31db.jpg",
+                    "https://i.pinimg.com/1200x/49/af/55/49af55fe5a8fcdfd8097bc6969132ef2.jpg",
+                    "https://i.pinimg.com/736x/ea/16/43/ea1643a90a9d3a0c2b48786899fc5070.jpg",
+                    "https://i.pinimg.com/1200x/ff/0c/f7/ff0cf7f1f2632aa5b72b3f2f7d19e452.jpg",
+                    "https://i.pinimg.com/1200x/70/73/cd/7073cdd86c1d7996965e3dcb4caa44b9.jpg",
+                    "https://i.pinimg.com/1200x/5b/49/77/5b49777bc3d240ddf34427bf7bfcd4a1.jpg",
+                    "https://i.pinimg.com/736x/d4/77/16/d477162fb76cad3b522d6359c837496f.jpg",
+                    "https://i.pinimg.com/1200x/f1/01/c9/f101c983ec3b14ebc6c88e6343c8731a.jpg",
+                    "https://i.pinimg.com/736x/9d/3e/cc/9d3ecc9f1e880922c315a811da1dd532.jpg",
+                    "https://i.pinimg.com/736x/f3/ae/ef/f3aeefa0e5ec528c6342d089e1c9b4c4.jpg",
+                    "https://i.pinimg.com/736x/81/8e/09/818e096d709d05c3b586d6d073d5fed1.jpg",
+                    "https://i.pinimg.com/1200x/68/5a/4c/685a4c3f05a4ac047656d30beddfe294.jpg",
+                    "https://i.pinimg.com/736x/62/ea/3a/62ea3a4d6146790ab120e4677f42ac16.jpg",
+                    "https://i.pinimg.com/736x/f4/df/98/f4df98416bbf9968ff7643ed771f8cfe.jpg"
+                ];
+
+                // Generate 72 graphic frames with some random spans for dynamic layout
+                document.write(Array.from({length: 72}).map((_, i) => {
+                    let extraClass = '';
+                    if (i % 7 === 0) extraClass = 'graphic-large';
+                    else if (i % 5 === 0) extraClass = 'graphic-wide';
+                    
+                    const img = graphicImageLinks[i];
+                    const contentHTML = img ? 
+                        `<img src="${img}" loading="lazy" alt="Graphic design visual" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">` : 
+                        `<i class="ri-image-line" style="color: rgba(255,255,255,0.1); font-size: 2rem;"></i>`;
+                    
+                    return `
+                    <div class="graphic-frame gsap-reveal ${extraClass}">
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative;">
+                            ${contentHTML}
+                        </div>
+                    </div>
+                    `;
+                }).join(''));
+            </script>
+        </div>
+    </section>
+
+    <!-- SECTION C: PRODUCT DESIGN -->
+    <section class="eco-container eco-section" style="padding-bottom: 10rem;">
+        <div class="eco-section-title gsap-reveal">
+            <h3>III. Product Design</h3>
+            <span class="eco-subtitle" style="margin:0;">SYS_PRODUCT</span>
+        </div>
+        
+        <div class="product-showcase gsap-reveal">
+            <div class="product-image" id="product-img-1" style="position: relative; overflow: hidden;">
+                <i class="ri-dashboard-fill" style="font-size: 5rem; color: #222; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0;"></i>
+            </div>
+            <div>
+                <h4 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">Platform Evolution Architecture</h4>
+                <p style="color: var(--eco-text-muted); margin-bottom: 1rem;"><strong>Concept:</strong> Next-generation data visualization and control hub.</p>
+                <p style="color: var(--eco-text-muted); margin-bottom: 1rem;"><strong>Product Thinking:</strong> Focus on extremely high data density while maintaining cognitive ease through deep blacks, subtle borders, and precise typography.</p>
+                <p style="color: var(--eco-text-muted); margin-bottom: 2rem;"><strong>Research:</strong> Validated against high-frequency trading terminals to ensure sub-millisecond visual scanning speeds.</p>
+                
+                <div style="border-left: 2px solid var(--eco-border); padding-left: 1.5rem;">
+                    <h5 style="font-family: var(--font-code); color: #fff; margin-bottom: 0.5rem;">Design Evolution Phase</h5>
+                    <p style="font-size: 0.9rem; color: #888;">Wireframe → High Fidelity → Prototyping → QA Testing</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-showcase gsap-reveal" style="flex-direction: row-reverse; display: flex;">
+            <div style="flex: 1;">
+                <h4 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">MediBridge Interface</h4>
+                <p style="color: var(--eco-text-muted); margin-bottom: 1rem;"><strong>Concept:</strong> AI-driven rural healthcare platform.</p>
+                <p style="color: var(--eco-text-muted); margin-bottom: 1rem;"><strong>Product Thinking:</strong> Accessibility-first design with high contrast, large touch targets, and multilingual neural processing at the core.</p>
+                <p style="color: var(--eco-text-muted); margin-bottom: 2rem;"><strong>Wireframes:</strong> Simplified triage flows designed for low-bandwidth environments.</p>
+            </div>
+            <div class="product-image" id="product-img-2" style="flex: 1; position: relative; overflow: hidden;">
+                <i class="ri-heart-pulse-fill" style="font-size: 5rem; color: #222; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0;"></i>
+            </div>
+        </div>
+        
+        <script>
+            const productImageLinks = {
+                "product-img-1": "https://i.pinimg.com/originals/cd/da/7c/cdda7cf332e6a88d36048e42d7825782.gif",
+                "product-img-2": "https://i.pinimg.com/1200x/36/c7/66/36c76689bb2f50b8011fe91dc2798d72.jpg"
+            };
+            
+            for (const [id, url] of Object.entries(productImageLinks)) {
+                if (url) {
+                    const container = document.getElementById(id);
+                    if (container) {
+                        container.insertAdjacentHTML('beforeend', `<img src="${url}" loading="lazy" alt="Product presentation" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">`);
+                    }
+                }
+            }
+        </script>
+    </section>
+
+    <!-- Social Marquee Shared System -->
+    <div class="eco-marquee-wrapper">
+        <div class="eco-marquee-content">
+            <div class="eco-marquee-item"><i class="ri-artboard-line"></i> Abstract Design Systems</div>
+            <div class="eco-marquee-item"><i class="ri-shape-line"></i> High-Contrast Layouts</div>
+            <div class="eco-marquee-item"><i class="ri-pencil-ruler-2-line"></i> Precise Typography</div>
+            <div class="eco-marquee-item"><i class="ri-contrast-drop-2-line"></i> Monolithic Interfaces</div>
+            <!-- Duplicate for infinite effect -->
+            <div class="eco-marquee-item"><i class="ri-artboard-line"></i> Abstract Design Systems</div>
+            <div class="eco-marquee-item"><i class="ri-shape-line"></i> High-Contrast Layouts</div>
+            <div class="eco-marquee-item"><i class="ri-pencil-ruler-2-line"></i> Precise Typography</div>
+            <div class="eco-marquee-item"><i class="ri-contrast-drop-2-line"></i> Monolithic Interfaces</div>
+        </div>
+    </div>
+
+    <!-- Elegant Main Footer -->
+    <footer id="main-footer" class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="syne-heading">Yogesh Sharma</h2>
+                <p class="jakarta-text">Engineering the future through logic and design.</p>
+            </div>
+            <div class="footer-graphic">
+                <!-- Minimal Developer Workstation SVG -->
+                <svg class="dev-silhouette" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Desk -->
+                    <line x1="10" y1="80" x2="90" y2="80" stroke="#333" stroke-width="2"/>
+                    <!-- Laptop -->
+                    <path d="M25 80 L45 80 L42 75 L28 75 Z" fill="#444" />
+                    <rect x="30" y="60" width="10" height="15" fill="#111" stroke="#444" stroke-width="1.5"/>
+                    <rect class="screen-glow" x="31" y="61" width="8" height="11" fill="#fff" opacity="0.9"/>
+                    <!-- Developer Silhouette -->
+                    <path d="M60 65 Q55 55 45 60 Q42 70 42 80 L65 80 Q65 70 60 65 Z" fill="#888" />
+                    <circle cx="58" cy="50" r="7" fill="#888" />
+                </svg>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#about" class="magnetic-link jakarta-text" aria-label="Profile Section">Profile</a>
+                <a href="index.html#services" class="magnetic-link jakarta-text" aria-label="Platform Hub Section">Platform Hub</a>
+                <a href="index.html#contact" class="magnetic-link jakarta-text" aria-label="Connect Section">Connect</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="major-mono">&copy; 2026 YOGESH SHARMA. ALL SYSTEMS OPERATIONAL.</p>
+            <p class="major-mono sys-status"><span class="pulse-dot"></span> SECURE_CONNECTION</p>
+        </div>
+    </footer>
+
+
+
+    <!-- GSAP & Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="ecosystem.js"></script>
+</body>
+</html>
